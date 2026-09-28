@@ -102,14 +102,33 @@ console.log("-------------------------------------\n");
 // ============================================================
 
 // TODO 4:
-// 1. Buat variabel "tierMember" dan "benefit" bertipe string kosong ("").
-// 2. Gunakan percabangan "if - else if - else" berdasarkan nilai "totalPoin":
-//    - totalPoin >= 100 : tierMember = "Platinum", benefit = "Diskon 20% + Gratis 1 Minuman Signature"
-//    - totalPoin >= 70  : tierMember = "Gold", benefit = "Diskon 10% di setiap transaksi"
-//    - totalPoin >= 40  : tierMember = "Silver", benefit = "Diskon 5% untuk menu minuman"
-//    - selain itu       : tierMember = "Bronze", benefit = "Member Reguler (kumpulkan poin untuk naik tier)"
-// 3. Cetak hasil tierMember dan benefit ke Console.
-// 4. Tampilkan ringkasan hasil member (nama, total poin, tier, benefit) via dialog alert().
+// 1. Buat variabel tierMember dan benefit
+let tierMember = "";
+let benefit = "";
+
+// 2. Gunakan percabangan if - else if - else
+if (totalPoin >= 100) {
+    tierMember = "Platinum";
+    benefit = "Diskon 20% + Gratis 1 Minuman Signature";
+} else if (totalPoin >= 70) {
+    tierMember = "Gold";
+    benefit = "Diskon 10% di setiap transaksi";
+} else if (totalPoin >= 40) {
+    tierMember = "Silver";
+    benefit = "Diskon 5% untuk menu minuman";
+} else {
+    tierMember = "Bronze";
+    benefit = "Member Reguler (kumpulkan poin untuk naik tier)";
+}
+
+// 3. Cetak hasil ke Console
+console.log("=== STATUS KEANGGOTAAN ===");
+console.log(`Status / Tier  : ${tierMember}`);
+console.log(`Benefit Reward : ${benefit}`);
+console.log("-------------------------------------\n");
+
+// 4. Tampilkan ringkasan via dialog alert()
+alert(`Ringkasan Member:\nNama: ${namaPelanggan}\nTotal Poin: ${totalPoin}\nTier: ${tierMember}\nBenefit: ${benefit}`);
 
 
 
@@ -119,24 +138,44 @@ console.log("-------------------------------------\n");
 // ============================================================
 
 // TODO 5A:
-// Buat fungsi "hitungTotalPoin(p1, p2, p3)" yang menerima 3 parameter nilai poin,
-// menjumlahkannya, dan mengembalikan (return) nilai total penjumlahannya.
+function hitungTotalPoin(p1, p2, p3) {
+    return p1 + p2 + p3; // return berfungsi membuang hasil penjumlahannya ke luar fungsi
+}
 
 
 
 
 // TODO 5B:
-// Buat fungsi "tentukanTierMember(poin)" yang menerima 1 parameter nilai poin,
-// dan mengembalikan (return) string nama tier beserta keterangannya.
+function tentukanTierMember(poin) {
+    if (poin >= 100) {
+        return "Platinum";
+    } else if (poin >= 70) {
+        return "Gold";
+    } else if (poin >= 40) {
+        return "Silver";
+    } else {
+        return "Bronze";
+    }
+}
 
 
 
 
 // TODO 5C:
-// Buktikan bahwa fungsi di atas bisa dipakai ulang (reusable):
-// 1. Hitung total poin dan tentukan tier untuk simulasi Pelanggan B (misal poin: 35, 25, 20).
-// 2. Hitung total poin dan tentukan tier untuk simulasi Pelanggan C (misal poin: 15, 10, 5).
-// 3. Cetak data Pelanggan B dan C ke tab Console.
+console.log("=== SIMULASI FUNGSI MODULAR ===");
+
+// 1. Simulasi Pelanggan B
+let totalPoinB = hitungTotalPoin(35, 25, 20); // Hasilnya 80
+let tierB = tentukanTierMember(totalPoinB);
+
+// 2. Simulasi Pelanggan C
+let totalPoinC = hitungTotalPoin(15, 10, 5); // Hasilnya 30
+let tierC = tentukanTierMember(totalPoinC);
+
+// 3. Cetak data Pelanggan B dan C ke Console
+console.log(`Pelanggan B - Poin: ${totalPoinB} -> Tier: ${tierB}`);
+console.log(`Pelanggan C - Poin: ${totalPoinC} -> Tier: ${tierC}`);
+console.log("-------------------------------------\n");
 
 
 
